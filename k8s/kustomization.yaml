@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml
+commonLabels:
+  app: buildah-node-app
+  app.kubernetes.io/instance: buildah-node-app-instance
+  app.kubernetes.io/name: buildah-node-app-app
+images:
+- name: quay.io/upslopeio/express-sample-app
+  newName: quay.io/an_qi_chen/buildah-node-app
+  newTag: 0b39a21fc9d45dd3379ddb4648414a1aa6846be9
